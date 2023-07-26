@@ -1,0 +1,60 @@
+<div class="mt-5">
+
+    <div class="container justify-content-center">
+
+        <form #form="ngForm" class="m-auto p-3" (submit)="formulaire(form, id)">
+
+
+
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input [(ngModel)]="recette.titre" type="text" class="form-control" id="titre" name="titre"/>
+            </div>
+
+            
+
+            <div class="form-group">
+                <label for="difficulte">Dificulté</label>
+                <select [(ngModel)]="recette.difficulte" class="form-control" id="difficulte" name="difficulte">
+                    <option value="facile">facile</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="expert">expert</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="descriptif">Description</label>
+                <input [(ngModel)]="recette.descriptif" type="text" class="form-control" id="descriptif" name="descriptif" />
+            </div>
+
+            <div class="form-group">
+                <label for="prep">Temps Préparation</label>
+                <input [(ngModel)]="recette.prep" type="text" class="form-control" id="prep" name="prep" />
+            </div>
+
+            <div class="form-group">
+                <label for="cuisson">Temps Cuisson</label>
+                <input [(ngModel)]="recette.cuisson" type="text" class="form-control" id="cuisson" name="cuisson" />
+            </div>
+
+            <div class="form-group">
+                <label for="cout">Cout</label>
+                <select [(ngModel)]="recette.cout" class="form-control" id="cout" name="cout">
+                    <option value="abordable">abordable</option>
+                    <option value="correct">corect</option>
+                    <option value="excessif">excessif</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Photo:</label>
+                <input type="text" [(ngModel)]="recette.photo" name="photo" class="form-control-file" id="photo">
+            </div>
+
+            <button type="submit" class="btn mt-3 btn-primary">Ajouter</button>
+
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="mt-5">
+
+    <div class="container justify-content-center">
+
+        <form #form="ngForm" class="m-auto p-3" (submit)="formulaire(form, id)">
+
+
+
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input [(ngModel)]="categorie.titre" type="text" class="form-control" id="titre" name="titre" />
+            </div>
+
+
+
+            <button type="submit" class="btn mt-3 btn-primary">Envoyer</button>
+
+        </form>
+
+    </div>
+
+</div>

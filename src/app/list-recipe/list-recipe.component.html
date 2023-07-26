@@ -1,0 +1,24 @@
+<div class="mt-5">
+
+<div class="container d-flex flex-wrap justify-content-center">
+
+    <div *ngFor="let recette of recipes" class="card m-2" style="width: 18rem;">
+
+        <img class="card-img-top" src="{{recette.photo}}" alt="Card image cap">
+
+        <h5 class="card-title pt-3" style="padding-left: 1rem">
+            {{recette.titre}}
+        </h5>
+
+        <div class="card-body">
+            <!-- <app-button-detail [descriptif]="recette.descriptif" [prep]="recette.prep" [cuisson]="recette.cuisson" [difficulte]="recette.difficulte" [cout]="recette.cout" [ingredients]="recette.ingredients" [etapes]="recette.etapes" [affiche]="affiche"></app-button-detail>    -->
+            <a class="card-link btn btn-secondary">Voir la recette</a>
+            <div class="pt-3">
+                <a [routerLink]="['/formRecipe', recette.id]" class="card-link btn btn-outline-warning">Modifier</a>
+                <a (click)="delete(recette.id)" class="card-link btn btn-outline-danger">Supprimer</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
