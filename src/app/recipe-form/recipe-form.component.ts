@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { RecetteService } from '../services/recette.service';
+import { Component,OnInit } from '@angular/core';
+import { NgForm} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpService } from '../services/API/http.service';
 
 @Component({
   selector: 'app-recipe-form',
@@ -9,55 +9,51 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./recipe-form.component.css']
 })
 export class RecipeFormComponent {
-  constructor(private rs: RecetteService, private router: Router, private route: ActivatedRoute) {
 
+  constructor(private http: HttpService, private router: Router, private route:ActivatedRoute){
   }
 
-  // Ajout ? ou Modif ? -> :
-  id: string | null = '0';
-  recette = {
-
-    titre: '',
-    descriptif: '',
-    ingredients: '',
-    difficulte: '',
-    prep: '',
-    cuisson: '',
-    cout: '',
-    photo: '',
-    etapes: []
+  id:any
+  categories:any
+  recette={
+    id:0,
+    titre:'',
+    id_categorie:'',
+    description:'',
+    difficulte:'',
+    tempsprep:'',
+    tempscuisson:'',
+    cout:'',
+    photo:'',
   }
 
-
-  formulaire(form: NgForm, id: any) {
-// return console.log(id);
-
-    if(id==null)
-   {
-
-     let test = this.rs.createRecipe(form.value);
-
-   } else {
-
-    this.rs.updateRecipe(form.value, id);
-
-   }
-   
+  formulaire(form:NgForm){
+    this.http.postData('recette',form.value).subscribe({
+      next:(data)=>console.log("ok"),
+      error:(err: Error)=>console.log(err),  
+      complete:()=>console.log('Recette ajoutée')
+    });
     this.router.navigate(['listRecipe']);
-    // console.log(test);
 
   }
 
+
+
+
+  // Capte le param en GET pour la modif :
+  ngOnInit(){
+
+
+    this.id=this.route.snapshot.paramMap.get('id');
   
+    if(this.id!=null){
+      
 
-  
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-
-    if (this.id != null) {
-
-      this.recette = this.rs.readOneRecipe(this.id)
-
+      this.http.getData('recette', this.id).subscribe({
+        next:(data)=>this.recette=data,
+        error:(err: Error)=>console.log(err),
+        complete:()=>console.log('Observer got a complete notification')
+      });
     }
   }
 }

@@ -2,7 +2,7 @@
 
     <div class="container justify-content-center">
 
-        <form #form="ngForm" class="m-auto p-3" (submit)="formulaire(form, id)">
+        <form #form="ngForm" class="m-auto p-3" (submit)="formulaire(form)">
 
 
 
@@ -11,6 +11,8 @@
                 <input [(ngModel)]="categorie.titre" type="text" class="form-control" id="titre" name="titre" />
             </div>
 
+
+            <input type="hidden" name="id" [(ngModel)]="categorie.id">
 
 
             <button type="submit" class="btn mt-3 btn-primary">Envoyer</button>

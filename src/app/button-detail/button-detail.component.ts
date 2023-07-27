@@ -7,9 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonDetailComponent {
 
-  @Input() descriptif: any
-  @Input() prep: any
-  @Input() cuisson: any
+  @Input() description: any
+  @Input() tempsprep: any
+  @Input() tempscuisson: any
   @Input() difficulte: any
   @Input() cout: any
   @Input() affiche: any

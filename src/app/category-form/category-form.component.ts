@@ -21,18 +21,19 @@ export class CategoryFormComponent {
   id: string | null = '0';
   categorie = {
 
+    id:0,
     titre: '',
 
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private async: AsyncService, private http:HttpService) {}
 
-  formulaire(form: NgForm, id: any) {
+  formulaire(form: NgForm) {
 
-    this.http.postData('categories', form.value).subscribe({
+    this.http.postData('categorie', form.value).subscribe({
 
       next: (data: string) => console.log(data),
-      error: (err: Error) => console.error('Observer got an error: ' + err),
+      error: (err: Error) => console.log('Observer got an error: ' + err),
       complete: () => console.log('Observer got a complete notification')
 
     });
@@ -42,12 +43,28 @@ export class CategoryFormComponent {
   }
 
 
+
+
+
+
+
   // Capte le param en GET pour la modif :
   ngOnInit() {
+
 
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id != null) {
+
+
+      this.http.getData('categorie', this.id).subscribe({
+        next:(data)=>this.categorie=data,
+        error:(err: Error)=>console.log(err),
+        complete:()=>console.log('Observer got a complete notification')
+      
+      });
+
+      console.log(this.categorie)
 
     }
 
