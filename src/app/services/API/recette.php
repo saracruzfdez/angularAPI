@@ -22,7 +22,6 @@ if ($_GET['action']=='readAll'){
 
     $result= $pdo->prepare($sql);
     $result->execute();    
-
     $data=$result->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($data);
