@@ -15,6 +15,7 @@ export class RecipeFormComponent {
 
   id:any
   categories:any
+  
   recette={
     id:0,
     titre:'',
@@ -28,6 +29,8 @@ export class RecipeFormComponent {
   }
 
   formulaire(form:NgForm){
+
+    
     this.http.postData('recette',form.value).subscribe({
       next:(data)=>console.log("ok"),
       error:(err: Error)=>console.log(err),  
@@ -39,10 +42,18 @@ export class RecipeFormComponent {
 
 
 
-
-  // Capte le param en GET pour la modif :
   ngOnInit(){
-
+    
+    this.http.getData('categorie', this.id).subscribe({
+      next:(data)=>this.categories=data,
+      error:(err: Error)=>console.log(err),
+      complete:()=>console.log('Observer got a complete notification')
+    });
+    
+    
+    
+    
+    // Capte le param en GET pour la modif :
 
     this.id=this.route.snapshot.paramMap.get('id');
   
@@ -54,6 +65,10 @@ export class RecipeFormComponent {
         error:(err: Error)=>console.log(err),
         complete:()=>console.log('Observer got a complete notification')
       });
+
+      
     }
+
+
   }
 }

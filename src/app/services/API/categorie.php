@@ -19,6 +19,10 @@ echo json_encode($data);
 
 
 
+
+
+
+
 // ON IMPLEMENT L METHODE DE NOTRE API pour READ :
 
 if($_GET['action']=='readAll')
@@ -49,6 +53,7 @@ if ($_GET['action']=='readOne'){
     echo json_encode($data);
 
 }
+
 
 
 

@@ -45,9 +45,6 @@ export class CategoryFormComponent {
 
 
 
-
-
-
   // Capte le param en GET pour la modif :
   ngOnInit() {
 

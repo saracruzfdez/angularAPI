@@ -31,7 +31,9 @@ delete(id:any){
       error:(err)=>console.log('erreur observer:'+err),
       complete:()=>console.log('recettes sont chargées')
       });
-    //  console.log(this.recipes);
+
+    console.log(this.recipes);
+
   }
 
  ngOnInit(){this.getData();}

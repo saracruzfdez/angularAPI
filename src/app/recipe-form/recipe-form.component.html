@@ -11,9 +11,9 @@
 
             <div class="form-group">
                 <label for="categorie"> Catégorie :</label>
-                <select [(ngModel)]="recette.id_categorie" name="id_categorie" class="form-control text-black" id="categorie ">
+                <select [(ngModel)]="recette.id_categorie" name="id_categorie" class="form-control text-black" id="id_categorie">
                     <option value="" disabled selected>-- Type de plat --</option>
-                    <option value="{{ categorie.id }}" *ngFor="let categorie of categories">{{ categorie.titre }}</option>
+                    <option value="{{categorie.id}}" *ngFor="let categorie of categories">{{categorie.titre}}</option>
                 </select>
             </div>
 
@@ -21,7 +21,7 @@
                 <label for="difficulte">Dificulté</label>
                 <select [(ngModel)]="recette.difficulte" class="form-control" id="difficulte" name="difficulte">
                     <option value="facile">facile</option>
-                    <option value="moyen">Moyen</option>
+                    <option value="moyen">moyen</option>
                     <option value="expert">expert</option>
                 </select>
             </div>
