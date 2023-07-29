@@ -32,9 +32,11 @@ export class HttpService {
 
 
   postData(table: string, data: JSON): Observable<any> {
-
+console.log("hello", data)
     return this.http.post('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=create', JSON.stringify(data));
 
   }
+
+  
 
 }

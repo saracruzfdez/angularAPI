@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../services/API/http.service';
 
@@ -12,32 +12,57 @@ import { HttpService } from '../services/API/http.service';
 // activo los imports tras haber creado el boton ingredientes y la ruta
 export class IngredientsFormComponent {
 
-constructor(private http: HttpService, private router: Router, private route: ActivatedRoute) {
-}
+  constructor(private http: HttpService, private router: Router, private route: ActivatedRoute) {
+  }
 
-ingredient={
-id:0,
-titre:'',
-unite: '',
-id_recette: '',
-quantite: ''
-}
+  recettes: any
+  action: any
 
-formulaire(form:NgForm){
+  ingredient = {
+    id: 0,
+    titre: '',
+    unite: '',
+    id_recette: '',
+    quantite: ''
+  }
 
-  this.http.postData('ingredient',form.value).subscribe({
-    next:(data)=>console.log("ok"),
-    error:(err: Error)=>console.log(err),  
-    complete:()=>console.log('Ingredient ajouté')
-  });
+  formulaire(form: NgForm) {
 
-}
+    // console.log(form.value)
+    
+    const id_current_recette = this.route.snapshot.paramMap.get('id');
+    
+    if (id_current_recette != null) {
+      
+      const data={
+        id_recette: id_current_recette,
+        titre: form.value.titre,
+        unite: form.value.unite,
+        quantite: form.value.quantite
+      }
+      
+      console.log(data)
 
-ngOnInit(){
-this.http.getData
+      this.http.postData('ingredient', data as any).subscribe({
+        next: (data) => console.log("ok"),
+        error: (err: Error) => console.log(err),
+        complete: () => console.log('Ingredient ajouté')
+      });
 
-}
+    }
+
+  }
+
+  ngOnInit() {
 
 
+
+
+
+
+
+
+
+  }
 
 }

@@ -6,16 +6,20 @@
 
             <div class="form-group">
                 <label for="titre">Titre</label>
-                <input [(ngModel)]="recette.titre" type="text" class="form-control" id="titre" name="titre"/>
+                <input [(ngModel)]="recette.titre" type="text" class="form-control" id="titre" name="titre" />
             </div>
 
+            
             <div class="form-group">
                 <label for="categorie"> Catégorie :</label>
-                <select [(ngModel)]="recette.id_categorie" name="id_categorie" class="form-control text-black" id="id_categorie">
+                <select [(ngModel)]="recette.id_categorie" name="id_categorie" class="form-control text-black"
+                    id="id_categorie">
                     <option value="" disabled selected>-- Type de plat --</option>
                     <option value="{{categorie.id}}" *ngFor="let categorie of categories">{{categorie.titre}}</option>
                 </select>
             </div>
+
+
 
             <div class="form-group">
                 <label for="difficulte">Dificulté</label>
@@ -28,17 +32,20 @@
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <input [(ngModel)]="recette.description" type="text" class="form-control" id="description" name="description" />
+                <input [(ngModel)]="recette.description" type="text" class="form-control" id="description"
+                    name="description" />
             </div>
 
             <div class="form-group">
                 <label for="tempsprep">Temps Préparation</label>
-                <input [(ngModel)]="recette.tempsprep" type="text" class="form-control" id="tempsprep" name="tempsprep" />
+                <input [(ngModel)]="recette.tempsprep" type="text" class="form-control" id="tempsprep"
+                    name="tempsprep" />
             </div>
 
             <div class="form-group">
                 <label for="tempscuisson">Temps Cuisson</label>
-                <input [(ngModel)]="recette.tempscuisson" type="text" class="form-control" id="tempscuisson" name="tempscuisson" />
+                <input [(ngModel)]="recette.tempscuisson" type="text" class="form-control" id="tempscuisson"
+                    name="tempscuisson" />
             </div>
 
             <div class="form-group">

@@ -17,8 +17,8 @@ const routes: Routes=[
 { path: 'formCategory', component: CategoryFormComponent},
 { path: 'formCategory/:id', component: CategoryFormComponent},
 { path: 'listCategory', component: ListCategoryComponent},
-{path: 'formIngredients', component: IngredientsFormComponent},
-{path: 'formIngredients/:id', component: IngredientsFormComponent},
+{ path: 'formIngredients', component: IngredientsFormComponent},
+{ path: 'formIngredients/:id', component: IngredientsFormComponent},
 
 ]
 
