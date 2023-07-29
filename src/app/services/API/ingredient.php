@@ -16,6 +16,17 @@ if($_GET['action']=='create'){
 }
 
 
+if ($_GET['action']=='readAll'){
+
+    $sql="SELECT i.*, r.titre as recette FROM recette r INNER JOIN ingredient i ON i.id_recette=r.id";
+
+    $result= $pdo->prepare($sql);
+    $result->execute();    
+    $data=$result->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($data);
+
+}
 
 
 

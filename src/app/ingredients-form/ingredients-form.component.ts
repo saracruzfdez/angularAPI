@@ -15,6 +15,7 @@ export class IngredientsFormComponent {
   constructor(private http: HttpService, private router: Router, private route: ActivatedRoute) {
   }
 
+  ingredients: any
   recettes: any
   action: any
 
@@ -29,18 +30,19 @@ export class IngredientsFormComponent {
   formulaire(form: NgForm) {
 
     // console.log(form.value)
-    
+
     const id_current_recette = this.route.snapshot.paramMap.get('id');
-    
+
     if (id_current_recette != null) {
-      
-      const data={
+
+      const data = {
         id_recette: id_current_recette,
+        id: 0,
         titre: form.value.titre,
         unite: form.value.unite,
         quantite: form.value.quantite
       }
-      
+
       console.log(data)
 
       this.http.postData('ingredient', data as any).subscribe({
@@ -53,16 +55,20 @@ export class IngredientsFormComponent {
 
   }
 
+
+
+
+
+
   ngOnInit() {
+    this.http.getData('ingredient').subscribe({
+      next: (data) =>{
+         this.ingredients = data
+         console.log(data)
+      },
+      error: (err: Error) => console.log(err),
+      complete: () => console.log('Observer got a complete notification')
 
-
-
-
-
-
-
-
-
+    })
   }
-
 }

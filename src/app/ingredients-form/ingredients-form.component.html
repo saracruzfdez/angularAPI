@@ -31,4 +31,24 @@
 
     </div>
 
+    <div class="container d-flex flex-wrap justify-content-center">
+
+        <div *ngFor="let ingredient of ingredients" class="card m-2" style="width: 18rem;">
+    
+    
+            <h5 class="card-title pt-3" style="padding-left: 1rem">
+                {{ingredient.titre}}
+            </h5>
+    
+            <div class="card-body">
+               
+                <div class="pt-3">
+                    <a [routerLink]="['', ingredient.id]" class="card-link btn btn-outline-warning">Modifier</a>
+                    <!-- <a (click)="delete(ingredient.id)" class="card-link btn btn-outline-danger">Supprimer</a> -->
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
 </div>
