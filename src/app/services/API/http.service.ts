@@ -22,10 +22,17 @@ export class HttpService {
   }
 
 
+
+
   getFilteredData(table: string, id: any):
   Observable<any>{
-    return this.http.post('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=getFiltered&id=' + id, {});  }
 
+    return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=getFiltered&id='+id);
+  }
+  
+
+
+    
 
   deleteData(table: string, id: any): Observable<any> {
 

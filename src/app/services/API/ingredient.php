@@ -16,12 +16,17 @@ if($_GET['action']=='create'){
 }
 
 
-if ($_GET['action']=='readAll'){
 
-    $sql="SELECT i.*, r.titre as recette FROM recette r INNER JOIN ingredient i ON i.id_recette=r.id";
+
+
+
+
+if ($_GET['action']=='getFiltered'){
+
+    $sql="SELECT * FROM ingredient WHERE id_recette = :id";
 
     $result= $pdo->prepare($sql);
-    $result->execute();    
+    $result->execute(array('id' => $_GET['id']));    
     $data=$result->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($data);
