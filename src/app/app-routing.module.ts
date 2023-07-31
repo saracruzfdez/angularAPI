@@ -7,6 +7,7 @@ import { ListRecipeComponent } from './list-recipe/list-recipe.component';
 import { CategoryFormComponent} from './category-form/category-form.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { IngredientsFormComponent } from './ingredients-form/ingredients-form.component';
+import { OneRecipeComponent } from './one-recipe/one-recipe.component';
 
 // tableau de route a integrer sur nos liens :
 const routes: Routes=[
@@ -19,7 +20,7 @@ const routes: Routes=[
 { path: 'listCategory', component: ListCategoryComponent},
 { path: 'formIngredients', component: IngredientsFormComponent},
 { path: 'formIngredients/:id', component: IngredientsFormComponent},
-
+{ path: 'oneRecipe/:id', component: OneRecipeComponent},
 ]
 
 

@@ -1,0 +1,36 @@
+<div class="container">
+
+    <div class="card mt-5 mb-3">
+
+        <div class="card-body">
+
+            <h3 class="card-title pb-2 pt-3">
+                {{recette.titre}}
+            </h3>
+
+            <p class="card-text">
+                La tarta de queso de Dulcespostres ha sido durante mucho tiempo la receta más popular del blog. Creo que
+                su éxito se debe a que no necesita horno para su elaboración y es una receta de queso muy fácil de hacer
+                y que tiene unos ingredientes muy económicos.
+            </p>
+
+            <h4>Pour {{nbPersonne}} personne/s</h4>
+
+            <button class="btn btn-info m-2" (click)="nbPersonne=nbPersonne+1">+</button>
+            <button class="btn btn-info m-2" (click)="nbPersonne=nbPersonne-1">-</button>
+
+            <ul>
+                <li *ngFor="let ingredient of ingredients">
+                    {{ ingredient.titre }}, {{ ingredient.quantite | quantity:nbPersonne }} {{ ingredient.unite | uppercase }}
+                </li>
+           </ul>
+
+
+
+
+            <img class="card-img-top" src="{{recette.photo}}" alt="Card image cap">
+
+        </div>
+    </div>
+
+</div>

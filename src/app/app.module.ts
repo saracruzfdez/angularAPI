@@ -13,6 +13,8 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IngredientsFormComponent } from './ingredients-form/ingredients-form.component';
+import { OneRecipeComponent } from './one-recipe/one-recipe.component';
+import { QuantityPipe } from './quantity.pipe';
 // import { ButtonsSecondairesComponent } from './buttons-secondaires/buttons-secondaires.component';
 
 @NgModule({
@@ -26,6 +28,8 @@ import { IngredientsFormComponent } from './ingredients-form/ingredients-form.co
     CategoryFormComponent,
     ListCategoryComponent,
     IngredientsFormComponent,
+    OneRecipeComponent,
+    QuantityPipe,
     // ButtonsSecondairesComponent,
   ],
   imports: [

@@ -60,6 +60,28 @@ export class IngredientsFormComponent {
   }
 
 
+  delete(id: any){
+    
+    this.http.deleteData('ingredient', id).subscribe({
+      next: () => this.getRecipeIngredientsFromBack(),
+      error: (err: Error) => console.log(err),
+      complete: () => {
+        console.log('ingredient supprimée'),
+        this.getRecipeIngredientsFromBack()
+      }
+    });
+
+  }
+  
+  
+  ngOnInit() {
+    
+    this.getRecipeIngredientsFromBack()
+    
+  }
+  
+  
+
   getRecipeIngredientsFromBack() {
     const id_current_recette = this.route.snapshot.paramMap.get('id');
 
@@ -73,38 +95,5 @@ export class IngredientsFormComponent {
     })
   }
 
-
-
-  // getData() {
-
-  //   this.http.getData('ingredient').subscribe({
-  //     next: (data) => this.ingredients = data,
-  //     error: (err) => console.log('erreur observer:' + err),
-  //     complete: () => console.log('recettes sont chargées')
-  //   });
-
-  //   console.log(this.ingredients);
-  // }
-
-  delete(id: any){
-
-    this.http.deleteData('ingredient', id).subscribe({
-      next: () => this.getRecipeIngredientsFromBack(),
-      error: (err: Error) => console.log(err),
-      complete: () => {
-        console.log('ingredient supprimée'),
-        this.getRecipeIngredientsFromBack()
-      }
-    });
-
-  }
-
-
-
-  ngOnInit() {
-
-    this.getRecipeIngredientsFromBack()
-
-  }
 
 }
