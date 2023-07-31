@@ -10,7 +10,7 @@ import { HttpService } from '../services/API/http.service';
 })
 
 // activo los imports tras haber creado el boton ingredientes y la ruta
-export class IngredientsFormComponent {
+export class CreateIngredientRecipeComponent {
 
   constructor(private http: HttpService, private router: Router, private route: ActivatedRoute) {
   }
@@ -26,10 +26,14 @@ export class IngredientsFormComponent {
     quantite: ''
   }
 
+  getRecipeId(){
+    return this.route.snapshot.paramMap.get('recipeId')
+  }
+
   formulaire(form: NgForm) {
     // console.log(form.value)
 
-    const id_current_recette = this.route.snapshot.paramMap.get('id');
+    const id_current_recette = this.getRecipeId();
 
     if (id_current_recette != null) {
 
@@ -74,6 +78,7 @@ export class IngredientsFormComponent {
   }
   
   
+  
   ngOnInit() {
     
     this.getRecipeIngredientsFromBack()
@@ -83,7 +88,8 @@ export class IngredientsFormComponent {
   
 
   getRecipeIngredientsFromBack() {
-    const id_current_recette = this.route.snapshot.paramMap.get('id');
+
+    const id_current_recette = this.getRecipeId();
 
     this.http.getFilteredData('ingredient', id_current_recette).subscribe({
       next: (data) => {

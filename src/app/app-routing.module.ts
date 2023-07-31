@@ -6,7 +6,7 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { ListRecipeComponent } from './list-recipe/list-recipe.component';
 import { CategoryFormComponent} from './category-form/category-form.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
-import { IngredientsFormComponent } from './ingredients-form/ingredients-form.component';
+import { CreateIngredientRecipeComponent } from './ingredients-form/ingredients-form.component';
 import { OneRecipeComponent } from './one-recipe/one-recipe.component';
 
 // tableau de route a integrer sur nos liens :
@@ -15,12 +15,14 @@ const routes: Routes=[
 { path: 'formRecipe', component: RecipeFormComponent},
 { path: 'formRecipe/:id', component: RecipeFormComponent},
 { path: 'listRecipe', component: ListRecipeComponent},
+{ path: 'oneRecipe/:id', component: OneRecipeComponent},
+
 { path: 'formCategory', component: CategoryFormComponent},
 { path: 'formCategory/:id', component: CategoryFormComponent},
 { path: 'listCategory', component: ListCategoryComponent},
-{ path: 'formIngredients', component: IngredientsFormComponent},
-{ path: 'formIngredients/:id', component: IngredientsFormComponent},
-{ path: 'oneRecipe/:id', component: OneRecipeComponent},
+
+{ path: 'recipe/:recipeId/ingredient/create', component: CreateIngredientRecipeComponent},
+{ path: 'recipe/:recipeId/ingredient/:ingredientId/update', component: CreateIngredientRecipeComponent},
 ]
 
 

@@ -17,12 +17,15 @@
                 <!-- Recupero el id de la recete para hacerlo transitar en get a una pagina form ingredeints : -->
                 <a [routerLink]="['/oneRecipe', recette.id]" class="card-link btn btn-outline-info">Voir recette</a>
 
-                <a [routerLink]="['/formIngredients', recette.id]"
-                    class="card-link btn btn-outline-info">Ingredients</a>
+                <a [routerLink]="['/recipe', recette.id, 'ingredient','create']" class="card-link btn btn-outline-info">Ingredients</a>
 
                 <div class="pt-3">
 
                     <a [routerLink]="['/formRecipe', recette.id]" class="card-link btn btn-outline-warning">Modifier</a>
+
+
+
+                    
 
                     <a (click)="delete(recette.id)" class="card-link btn btn-outline-danger">Supprimer</a>
 

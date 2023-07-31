@@ -37,7 +37,7 @@
 
                 <div class="d-flex justify-content-end">
                     <div class="p-1">
-                        <a [routerLink]="['/formIngredients', ingredient.id]" class="card-link btn btn-outline-info">Modifier</a>
+                        <a [routerLink]="['/recipe', getRecipeId(), 'ingredient', ingredient.id, 'update']" class="card-link btn btn-outline-info">Modifier</a>
                     </div>
                     
                     <div class="p-1" (click)="delete(ingredient.id);">
