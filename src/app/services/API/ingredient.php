@@ -18,9 +18,6 @@ if($_GET['action']=='create'){
 
 
 
-
-
-
 if ($_GET['action']=='getFiltered'){
 
     $sql="SELECT * FROM ingredient WHERE id_recette = :id";
@@ -31,6 +28,18 @@ if ($_GET['action']=='getFiltered'){
 
     echo json_encode($data);
 
+}
+
+
+
+if ($_GET['action'] == 'delete') {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $sql = "DELETE FROM ingredient WHERE id=:id";
+
+    $result = $pdo->prepare($sql);
+    $result->execute(['id' => $_GET['id']]);
+    echo json_encode($result);
 }
 
 

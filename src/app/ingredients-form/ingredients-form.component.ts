@@ -15,19 +15,18 @@ export class IngredientsFormComponent {
   constructor(private http: HttpService, private router: Router, private route: ActivatedRoute) {
   }
 
-  id: any
+  // 1. Pour creer un ingredient :
   ingredients: any
 
   ingredient = {
+    id_recette: '',
     id: 0,
     titre: '',
     unite: '',
-    id_recette: '',
     quantite: ''
   }
 
   formulaire(form: NgForm) {
-
     // console.log(form.value)
 
     const id_current_recette = this.route.snapshot.paramMap.get('id');
@@ -61,23 +60,51 @@ export class IngredientsFormComponent {
   }
 
 
-getRecipeIngredientsFromBack(){
-  const id_current_recette = this.route.snapshot.paramMap.get('id');
+  getRecipeIngredientsFromBack() {
+    const id_current_recette = this.route.snapshot.paramMap.get('id');
 
-  this.http.getFilteredData('ingredient', id_current_recette).subscribe({
-    next: (data) => {
-      this.ingredients = data
-      console.log(data)
-    },
-    error: (err: Error) => console.log(err),
-    complete: () => console.log('Observer got a complete notification')
-  })
-}
+    this.http.getFilteredData('ingredient', id_current_recette).subscribe({
+      next: (data) => {
+        this.ingredients = data
+        console.log(data)
+      },
+      error: (err: Error) => console.log(err),
+      complete: () => console.log('Observer got a complete notification')
+    })
+  }
+
+
+
+  // getData() {
+
+  //   this.http.getData('ingredient').subscribe({
+  //     next: (data) => this.ingredients = data,
+  //     error: (err) => console.log('erreur observer:' + err),
+  //     complete: () => console.log('recettes sont chargées')
+  //   });
+
+  //   console.log(this.ingredients);
+  // }
+
+  delete(id: any){
+
+    this.http.deleteData('ingredient', id).subscribe({
+      next: () => this.getRecipeIngredientsFromBack(),
+      error: (err: Error) => console.log(err),
+      complete: () => {
+        console.log('ingredient supprimée'),
+        this.getRecipeIngredientsFromBack()
+      }
+    });
+
+  }
+
 
 
   ngOnInit() {
 
-this.getRecipeIngredientsFromBack()
+    this.getRecipeIngredientsFromBack()
 
   }
+
 }
