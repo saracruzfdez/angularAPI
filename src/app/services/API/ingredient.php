@@ -17,7 +17,6 @@ if($_GET['action']=='create'){
 
 
 
-
 if ($_GET['action']=='getFiltered'){
 
     $sql="SELECT * FROM ingredient WHERE id_recette = :id";
@@ -44,11 +43,17 @@ if ($_GET['action'] == 'delete') {
 
 
 
+if ($_GET['action'] == 'readOne') {
 
+    $sql = "SELECT * FROM ingredient WHERE id = :id";
 
+    $result = $pdo->prepare($sql);
+    $result->execute(['id' => $_GET['id']]);
 
+    $data = $result->fetch(PDO::FETCH_ASSOC);
 
+    echo json_encode($data);
 
-
+}
 
 ?>

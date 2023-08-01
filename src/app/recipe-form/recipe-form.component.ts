@@ -32,7 +32,6 @@ export class RecipeFormComponent {
 
     console.log(form.value)
 
-
     this.http.postData('recette', form.value).subscribe({
       next: (data) => console.log("ok"),
       error: (err: Error) => console.log(err),
@@ -41,10 +40,6 @@ export class RecipeFormComponent {
     this.router.navigate(['listRecipe']);
 
   }
-
-
-
-
 
 
   ngOnInit() {
@@ -57,21 +52,18 @@ export class RecipeFormComponent {
 
 
 
-
-
-
     // Capte le param en GET pour la modif :
 
     this.id = this.route.snapshot.paramMap.get('id');
-
-    if (this.id != null) {
-
-
-      this.http.getData('recette', this.id).subscribe({
+ this.http.getData('recette', this.id).subscribe({
         next: (data) => this.recette = data,
         error: (err: Error) => console.log(err),
         complete: () => console.log('Observer got a complete notification')
       });
+    if (this.id != null) {
+
+
+     
 
 
     }

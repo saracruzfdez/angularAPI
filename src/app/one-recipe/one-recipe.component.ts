@@ -22,42 +22,40 @@ export class OneRecipeComponent {
       next: (data) => this.recette = data,
       error: (err) => console.log('erreur observer:' + err),
       complete: () => console.log('recette chargée')
-
     })
-
   }
 
-// RENDRE DINAMIQUE :
-nbPersonne:number=1
-prix:any
+  // RENDRE DINAMIQUE :
+  nbPersonne: number = 1
+  prix: any
 
-  ingredients:any =[
+  ingredients: any = [
     {
-    id: 1,
-    titre: 'oeufs',
-    unite: 'u',
-    quantite: '2',
-  },
-  {
-    id: 2,
-    titre: 'lait',
-    unite: 'l',
-    quantite: '2',
-  },
-  {
-    id: 3,
-    titre: 'farine',
-    unite: 'gr',
-    quantite: '200',
+      id: 1,
+      titre: 'oeufs',
+      unite: 'u',
+      quantite: '2',
+    },
+    {
+      id: 2,
+      titre: 'lait',
+      unite: 'l',
+      quantite: '2',
+    },
+    {
+      id: 3,
+      titre: 'farine',
+      unite: 'gr',
+      quantite: '200',
 
-  },
-  {
-    id: 4,
-    titre: 'sel',
-    unite: 'pincees',
-    quantite: '2',
+    },
+    {
+      id: 4,
+      titre: 'sel',
+      unite: 'pincees',
+      quantite: '2',
 
-  }
+    }
   ]
 
 }

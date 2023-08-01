@@ -16,19 +16,25 @@ export class CreateIngredientRecipeComponent {
   }
 
   // 1. Pour creer un ingredient :
+  id: any
   ingredients: any
 
+
   ingredient = {
+
     id_recette: '',
     id: 0,
     titre: '',
     unite: '',
     quantite: ''
+
   }
+
 
   getRecipeId(){
     return this.route.snapshot.paramMap.get('recipeId')
   }
+
 
   formulaire(form: NgForm) {
     // console.log(form.value)
@@ -45,16 +51,16 @@ export class CreateIngredientRecipeComponent {
         quantite: form.value.quantite
       }
 
-      console.log(data)
+      // console.log(data)
 
       this.http.postData('ingredient', data as any).subscribe({
         next: (data) => console.log("ok"),
         error: (err: Error) => console.log(err),
         complete: () => {
 
-          console.log('Ingredient ajouté')
+          // console.log('Ingredient ajouté')
 
-          this.getRecipeIngredientsFromBack()
+          this.updateRecipeIngredientsFromBack()
 
         }
       });
@@ -63,31 +69,49 @@ export class CreateIngredientRecipeComponent {
 
   }
 
-
+// 2. delete ingredient :
   delete(id: any){
     
     this.http.deleteData('ingredient', id).subscribe({
-      next: () => this.getRecipeIngredientsFromBack(),
+      next: () => this.updateRecipeIngredientsFromBack(),
       error: (err: Error) => console.log(err),
       complete: () => {
         console.log('ingredient supprimée'),
-        this.getRecipeIngredientsFromBack()
+        this.updateRecipeIngredientsFromBack()
       }
     });
 
   }
   
-  
-  
+
   ngOnInit() {
     
-    this.getRecipeIngredientsFromBack()
-    
+    this.updateRecipeIngredientsFromBack()
+
+
+  // Capte les param pour la modif :
+console.log('ingredient_id :', this.getIngredientId())
+
+    if (this.getIngredientId() != null) {
+
+      this.http.getData('ingredient', this.getIngredientId()).subscribe({
+        next: (data) => {
+          this.ingredient = data
+          console.log('ingredient:', this.ingredient)
+        },
+
+        error: (err: Error) => console.log(err),
+        complete: () => console.log('Observer got a complete notification')
+      });
+
+
+    }
+
   }
   
-  
 
-  getRecipeIngredientsFromBack() {
+
+  updateRecipeIngredientsFromBack() {
 
     const id_current_recette = this.getRecipeId();
 
@@ -101,5 +125,14 @@ export class CreateIngredientRecipeComponent {
     })
   }
 
+
+
+  // 4. Modifier ingredient :
+  getIngredientId(){
+    return this.route.snapshot.paramMap.get('ingredientId')
+  }
+
+
+  
 
 }

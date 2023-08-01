@@ -10,7 +10,6 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
 
-  
 
   getData(table: string, id: any=null): Observable<any>{
 
@@ -23,22 +22,22 @@ export class HttpService {
 
 
 
-
   getFilteredData(table: string, id: any):
   Observable<any>{
 
     return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=getFiltered&id='+id);
   }
+
+  
   
 
-
-    
 
   deleteData(table: string, id: any): Observable<any> {
 
     return this.http.post('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=delete&id=' + id, {});
 
   }
+
 
 
   postData(table: string, data: JSON): Observable<any> {

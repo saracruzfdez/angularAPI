@@ -14,7 +14,6 @@ export class ListCategoryComponent implements OnInit {
   constructor(private http: HttpClient, private httpService: HttpService) { }
 
 
-
   delete(id: any) {
 
     this.categories = this.httpService.deleteData("categorie", id).subscribe({
@@ -25,6 +24,7 @@ export class ListCategoryComponent implements OnInit {
 
     });
   }
+
 
   getData() {
 
@@ -37,6 +37,7 @@ export class ListCategoryComponent implements OnInit {
     });
 
   }
+  
 
   // ajouté ds l'import en haut
   ngOnInit(): void {
