@@ -11,25 +11,25 @@ export class HttpService {
 
 
 
-  getData(table: string, id: any=null): Observable<any>{
+  getData(table: string, id: any = null): Observable<any> {
 
-    if(id!=null){
-    return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/'+table+'.php?action=readOne&id='+id);
-    }else{
-    return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/'+table+'.php?action=readAll');
+    if (id != null) {
+      return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=readOne&id=' + id);
+    } else {
+      return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=readAll');
     }
   }
 
 
 
   getFilteredData(table: string, id: any):
-  Observable<any>{
+    Observable<any> {
 
-    return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=getFiltered&id='+id);
+    return this.http.get('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=getFiltered&id=' + id);
   }
 
-  
-  
+
+
 
 
   deleteData(table: string, id: any): Observable<any> {
@@ -42,12 +42,12 @@ export class HttpService {
 
   postData(table: string, data: JSON): Observable<any> {
 
-// console.log("hello", data)
+    // console.log("hello", data)
 
     return this.http.post('http://localhost/angular/angularAPI/src/app/services/API/' + table + '.php?action=create', JSON.stringify(data));
 
   }
 
-  
+
 
 }

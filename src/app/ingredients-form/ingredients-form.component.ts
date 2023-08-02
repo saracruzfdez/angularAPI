@@ -16,20 +16,25 @@ export class CreateIngredientRecipeComponent {
   }
 
   // 1. Pour creer un ingredient :
-  id: any
   ingredients: any
 
-
-  ingredient = {
-
+  editedIngredient = {
     id_recette: '',
     id: 0,
     titre: '',
     unite: '',
     quantite: ''
-
   }
 
+  getIsUpdating() {
+    const url = this.route.snapshot.url
+    const lastSegment = url.at(-1)
+    if(lastSegment?.path === "update") {
+      return true
+    }
+
+    return false
+  }
 
   getRecipeId(){
     return this.route.snapshot.paramMap.get('recipeId')
@@ -57,11 +62,8 @@ export class CreateIngredientRecipeComponent {
         next: (data) => console.log("ok"),
         error: (err: Error) => console.log(err),
         complete: () => {
-
           // console.log('Ingredient ajouté')
-
           this.updateRecipeIngredientsFromBack()
-
         }
       });
 
@@ -69,7 +71,7 @@ export class CreateIngredientRecipeComponent {
 
   }
 
-// 2. delete ingredient :
+  // 2. delete ingredient :
   delete(id: any){
     
     this.http.deleteData('ingredient', id).subscribe({
@@ -85,31 +87,30 @@ export class CreateIngredientRecipeComponent {
   
 
   ngOnInit() {
-    
     this.updateRecipeIngredientsFromBack()
+    this.updateEditedInredientFromBack()
 
+    this.route.paramMap.subscribe( (value) => {
+      console.log("Hello", value.get("ingredientId"))
+      this.updateEditedInredientFromBack()
+    })
+  }
+  
 
-  // Capte les param pour la modif :
-console.log('ingredient_id :', this.getIngredientId())
-
+  updateEditedInredientFromBack() {
+    console.log("Enter function")
     if (this.getIngredientId() != null) {
-
       this.http.getData('ingredient', this.getIngredientId()).subscribe({
         next: (data) => {
-          this.ingredient = data
-          console.log('ingredient:', this.ingredient)
+          this.editedIngredient = data
+          console.log('ingredient:', this.editedIngredient)
         },
 
         error: (err: Error) => console.log(err),
         complete: () => console.log('Observer got a complete notification')
       });
-
-
     }
-
   }
-  
-
 
   updateRecipeIngredientsFromBack() {
 
